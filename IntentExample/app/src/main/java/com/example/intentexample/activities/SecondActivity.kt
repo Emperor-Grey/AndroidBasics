@@ -1,6 +1,9 @@
 package com.example.intentexample.activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +22,18 @@ class SecondActivity : AppCompatActivity() {
             insets
         }
         val name = findViewById<TextView>(R.id.name)
-        val intentData = intent.getStringExtra("name")
+        val openYT = findViewById<Button>(R.id.openYT)
 
+        // Explicit Intent
+        val intentData = intent.getStringExtra("name")
         name.text = intentData.toString()
+
+        // Implicit Intent - Open page or send mail or share and so on
+        openYT.setOnClickListener {
+            val intent =
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@kinggrey2511"))
+            startActivity(intent)
+        }
+
     }
 }
