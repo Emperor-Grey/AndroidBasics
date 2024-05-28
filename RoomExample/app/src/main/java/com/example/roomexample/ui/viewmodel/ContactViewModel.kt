@@ -14,7 +14,7 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
     private var contactToUpdateOrDelete: Contact? = null
 
     val inputName = MutableLiveData<String>()
-    val email = MutableLiveData<String>()
+    val inputEmail = MutableLiveData<String>()
     val saveOrUpdateButtonTxt = MutableLiveData<String>()
     val clearAll = MutableLiveData<String>()
 
@@ -34,7 +34,7 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
         contactRepository.removeContact(contact)
 
         inputName.value = ""
-        email.value = ""
+        inputEmail.value = ""
         isUpdateOrDelete = false
         saveOrUpdateButtonTxt.value = "Save"
         clearAll.value = "Clear All"
@@ -44,7 +44,7 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
         contactRepository.updateContact(contact)
 
         inputName.value = ""
-        email.value = ""
+        inputEmail.value = ""
         isUpdateOrDelete = false
         saveOrUpdateButtonTxt.value = "Save"
         clearAll.value = "Clear All"
@@ -56,26 +56,23 @@ class ContactViewModel(private val contactRepository: ContactRepository) : ViewM
 
     fun initUpdateOrDelete(contact: Contact) {
         inputName.value = contact.name
-        email.value = contact.email
+        inputEmail.value = contact.email
         contactToUpdateOrDelete = contact
         isUpdateOrDelete = true
         saveOrUpdateButtonTxt.value = "Update"
         clearAll.value = "Delete"
     }
 
-    fun saveOrUpdate() {
+    fun saveOrUpdate(name: String, email: String) {
         if (isUpdateOrDelete) {
             contactToUpdateOrDelete?.let { contact ->
-                contact.name = inputName.value.toString()
-                contact.email = email.value.toString()
+                contact.name = name
+                contact.email = email
                 updateContact(contact)
             }
         } else {
-            val contact = Contact(0, inputName.value.toString(), email.value.toString())
+            val contact = Contact(0, name, email)
             insertContact(contact)
-
-            inputName.value = ""
-            email.value = ""
         }
     }
 

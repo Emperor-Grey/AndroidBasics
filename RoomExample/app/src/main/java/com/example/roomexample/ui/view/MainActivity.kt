@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setUpRecyclerView()
 
         name.setText(contactViewModel.inputName.value)
-        email.setText(contactViewModel.email.value)
+        email.setText(contactViewModel.inputEmail.value)
         save.text = contactViewModel.saveOrUpdateButtonTxt.value
         clearAll.text = contactViewModel.clearAll.value
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         save.setOnClickListener {
-            contactViewModel.saveOrUpdate()
+            contactViewModel.saveOrUpdate(name.text.toString(), email.text.toString())
         }
 
         clearAll.setOnClickListener {
