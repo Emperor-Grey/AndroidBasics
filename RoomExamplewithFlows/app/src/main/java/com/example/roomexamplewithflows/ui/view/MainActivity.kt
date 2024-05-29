@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         val email: EditText = findViewById(R.id.email)
         val save: Button = findViewById(R.id.save)
         val clearAll: Button = findViewById(R.id.clearAll)
+        val contactRecyclerView = findViewById<RecyclerView>(R.id.mainRecyclerView)
 
         val contactDao = ContactDataBase.getInstance(applicationContext).contactDao
         val contactRepository = ContactRepository(contactDao)
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         contactViewModel =
             ViewModelProvider(this@MainActivity, factory).get(ContactViewModel::class.java)
 
-        setUpRecyclerView()
+        setUpRecyclerView(contactRecyclerView)
 
         lifecycleScope.launch {
             contactViewModel.inputName.collect { nameText ->
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         save.setOnClickListener {
             contactViewModel.saveOrUpdate(name.text.toString(), email.text.toString())
+            contactRecyclerView.adapter?.notifyDataSetChanged()
         }
 
         clearAll.setOnClickListener {
@@ -77,8 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun setUpRecyclerView() {
-        val contactRecyclerView = findViewById<RecyclerView>(R.id.mainRecyclerView)
+    private fun setUpRecyclerView(contactRecyclerView: RecyclerView) {
         contactRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
