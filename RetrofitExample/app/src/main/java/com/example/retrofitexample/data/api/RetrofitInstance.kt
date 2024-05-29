@@ -19,9 +19,15 @@ class RetrofitInstance {
         OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build()
     }
 
-    fun getRetrofitInstance(): Retrofit {
+    private fun getRetrofitInstance(): Retrofit {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .client(httpClient).build()
+    }
+
+    val instance = getRetrofitInstance()
+
+    fun getMovieService(): MovieService {
+        return getRetrofitInstance().create(MovieService::class.java)
     }
 }

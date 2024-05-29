@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitexample.R
 import com.example.retrofitexample.data.api.RetrofitInstance
-import com.example.retrofitexample.data.repository.MovieRepositoryImpl
 import com.example.retrofitexample.ui.view.adapters.MovieAdapter
 import com.example.retrofitexample.ui.viewmodel.MovieViewModel
 import com.example.retrofitexample.ui.viewmodel.MovieViewModelFactory
@@ -26,11 +25,11 @@ class Home : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         val retrofitInstance = RetrofitInstance()
-        val movieRepository = MovieRepositoryImpl(retrofitInstance)
-        movieViewModel =
-            ViewModelProvider(requireActivity(), MovieViewModelFactory(movieRepository)).get(
-                MovieViewModel::class.java
+        movieViewModel = ViewModelProvider(
+            requireActivity(), MovieViewModelFactory(
+                retrofitInstance
             )
+        ).get(MovieViewModel::class.java)
         setUpRecyclerView(view)
         return view
     }
