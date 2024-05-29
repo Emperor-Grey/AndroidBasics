@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_nav"
+    app:startDestination="@id/home3">
+
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.example.retrofitexample.home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home3_to_movieDetails2"
+            app:destination="@id/movieDetails2" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetails2"
+        android:name="com.example.retrofitexample.ui.view.fragments.MovieDetails"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <action
+            android:id="@+id/action_movieDetails2_to_home3"
+            app:destination="@id/home3" />
+    </fragment>
+</navigation>
