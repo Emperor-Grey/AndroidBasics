@@ -2,7 +2,7 @@ package com.example.retrofitexample.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.retrofitexample.data.api.Result
+import com.example.retrofitexample.utils.Result
 import com.example.retrofitexample.data.model.MovieResponse
 import com.example.retrofitexample.data.repository.MovieRepository
 import kotlinx.coroutines.channels.Channel

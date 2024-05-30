@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/movie_nav"
     app:startDestination="@id/home3">
@@ -11,15 +11,23 @@
         android:label="fragment_home">
         <action
             android:id="@+id/navigateToDetails"
-            app:destination="@id/movieDetails2" />
+            app:destination="@id/movieDetails2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/movieDetails2"
         android:name="com.example.retrofitexample.ui.view.fragments.MovieDetails"
         android:label="fragment_movie_details"
-        tools:layout="@layout/fragment_movie_details" >
+        tools:layout="@layout/fragment_movie_details">
         <action
             android:id="@+id/navigateBackToHome"
-            app:destination="@id/home3" />
+            app:destination="@id/home3"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <argument
+            android:name="movieId"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 </navigation>

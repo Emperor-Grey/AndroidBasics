@@ -1,7 +1,7 @@
 package com.example.retrofitexample.data.repository
 
 import com.example.retrofitexample.data.api.MovieService
-import com.example.retrofitexample.data.api.Result
+import com.example.retrofitexample.utils.Result
 import com.example.retrofitexample.data.api.RetrofitInstance
 import com.example.retrofitexample.data.model.MovieResponse
 import kotlinx.coroutines.flow.Flow
@@ -16,8 +16,7 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
         return flow {
             val movies = try {
                 movieService.getPopularMovies(
-                    page = page,
-                    apiKey = "d7c6aa191629170a8dfea80f78e1dcd6"
+                    page = page, apiKey = "d7c6aa191629170a8dfea80f78e1dcd6"
                 )
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -32,4 +31,22 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
         }
     }
 
+    override suspend fun getMovieDetails(movieId: Int): Flow<Result<MovieResponse>> {
+        return flow {
+            val movieDetails = try {
+                movieService.getMovieDetails(
+                    apiKey = "d7c6aa191629170a8dfea80f78e1dcd6", movieId = movieId
+                )
+            } catch (e: IOException) {
+                e.printStackTrace()
+                emit(Result.Error(message = "Error getting movie Details"))
+                return@flow
+            } catch (e: HttpException) {
+                e.printStackTrace()
+                emit(Result.Error(message = "Error getting movie Details"))
+                return@flow
+            }
+            emit(Result.Success(movieDetails))
+        }
+    }
 }

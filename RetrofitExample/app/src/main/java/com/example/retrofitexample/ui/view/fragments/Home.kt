@@ -20,7 +20,6 @@ import com.example.retrofitexample.ui.viewmodel.MovieViewModelFactory
 import kotlinx.coroutines.launch
 
 class Home : Fragment() {
-
     private lateinit var movieViewModel: MovieViewModel
     private lateinit var progressBar: ProgressBar
 
@@ -65,9 +64,11 @@ class Home : Fragment() {
         lifecycleScope.launch {
             movieViewModel.movies.collect { movies ->
                 movies.let {
-                    recyclerView.adapter = MovieAdapter(view.context, movieViewModel.movies.value) {
-                        Navigation.findNavController(view).navigate(R.id.navigateToDetails)
-                    }
+                    recyclerView.adapter =
+                        MovieAdapter(view.context, movieViewModel.movies.value) { movieResult ->
+                            val action = HomeDirections.navigateToDetails(movieId = movieResult.id)
+                            Navigation.findNavController(view).navigate(action)
+                        }
                     recyclerView.adapter?.notifyDataSetChanged()
                 }
             }

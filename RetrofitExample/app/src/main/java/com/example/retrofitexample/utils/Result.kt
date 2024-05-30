@@ -1,4 +1,4 @@
-package com.example.retrofitexample.data.api
+package com.example.retrofitexample.utils
 
 sealed class Result<T>(
     val data: T? = null, val message: String? = null
