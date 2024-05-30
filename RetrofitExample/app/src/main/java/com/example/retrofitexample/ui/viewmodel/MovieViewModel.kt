@@ -55,7 +55,6 @@ class MovieViewModel(
                     when (result) {
                         is Result.Error -> {
                             _showErrorToast.send(true)
-                            _showLoading.send(true)
                         }
 
                         is Result.Success -> {

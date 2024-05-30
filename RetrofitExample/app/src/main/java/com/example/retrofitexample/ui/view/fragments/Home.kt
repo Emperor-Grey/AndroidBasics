@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitexample.R
@@ -65,7 +66,7 @@ class Home : Fragment() {
             movieViewModel.movies.collect { movies ->
                 movies.let {
                     recyclerView.adapter = MovieAdapter(view.context, movieViewModel.movies.value) {
-//                        findNavController().navigate()
+                        Navigation.findNavController(view).navigate(R.id.navigateToDetails)
                     }
                     recyclerView.adapter?.notifyDataSetChanged()
                 }
