@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class RetrofitInstance {
 
     companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/3/movie"
+        private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
     }
 
     private val httpClient: OkHttpClient by lazy {

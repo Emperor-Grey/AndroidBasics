@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="011ce9b2-0e9c-4adb-b7dd-18c0538e070a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/data/repository/MovieRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/data/repository/MovieRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/ui/view/fragments/Home.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/ui/view/fragments/Home.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/ui/viewmodel/MovieViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/RetrofitExample/app/src/main/java/com/example/retrofitexample/ui/viewmodel/MovieViewModelFactory.kt" afterDir="false" />
-    </list>
+    <list default="true" id="011ce9b2-0e9c-4adb-b7dd-18c0538e070a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

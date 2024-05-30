@@ -68,6 +68,9 @@ dependencies {
     // Logging Interceptors
     implementation(libs.logging.interceptor)
 
+    // Paging
+    implementation(libs.androidx.paging.runtime)
+
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 

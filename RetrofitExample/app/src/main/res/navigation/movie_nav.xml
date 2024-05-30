@@ -7,9 +7,8 @@
 
     <fragment
         android:id="@+id/home3"
-        android:name="com.example.retrofitexample.home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:name="com.example.retrofitexample.ui.view.fragments.Home"
+        android:label="fragment_home">
         <action
             android:id="@+id/action_home3_to_movieDetails2"
             app:destination="@id/movieDetails2" />

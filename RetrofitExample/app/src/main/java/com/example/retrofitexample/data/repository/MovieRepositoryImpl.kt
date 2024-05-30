@@ -12,10 +12,13 @@ import retrofit2.HttpException
 class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : MovieRepository {
 
     private val movieService: MovieService = retrofitInstance.getMovieService()
-    override suspend fun getPopularMovies(): Flow<Result<List<MovieResponse>>> {
+    override suspend fun getPopularMovies(page: Int): Flow<Result<List<MovieResponse>>> {
         return flow {
             val movies = try {
-                movieService.getPopularMovies(page = 1, apiKey = "d7c6aa191629170a8dfea80f78e1dcd6")
+                movieService.getPopularMovies(
+                    page = page,
+                    apiKey = "d7c6aa191629170a8dfea80f78e1dcd6"
+                )
             } catch (e: IOException) {
                 e.printStackTrace()
                 emit(Result.Error(message = "Error getting movies"))

@@ -1,0 +1,44 @@
+Index: app/src/main/java/com/example/retrofitexample/data/api/MovieService.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/retrofitexample/data/api/MovieService.kt b/app/src/main/java/com/example/retrofitexample/data/api/MovieService.kt
+--- a/app/src/main/java/com/example/retrofitexample/data/api/MovieService.kt	
++++ b/app/src/main/java/com/example/retrofitexample/data/api/MovieService.kt	
+@@ -13,6 +13,6 @@
+     ): Movies
+ 
+     companion object {
+-        const val BASE_URL = "https://api.themoviedb.org/3/movie"
++        const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+     }
+ }
+Index: app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt
+===================================================================
+diff --git a/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt b/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt
+--- a/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt	
++++ b/app/src/main/java/com/example/retrofitexample/data/api/RetrofitInstance.kt	
+@@ -9,7 +9,7 @@
+ class RetrofitInstance {
+ 
+     companion object {
+-        private const val BASE_URL = "https://api.themoviedb.org/3/movie"
++        private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+     }
+ 
+     private val httpClient: OkHttpClient by lazy {
+Index: app/src/main/res/navigation/movie_nav.xml
+===================================================================
+diff --git a/app/src/main/res/navigation/movie_nav.xml b/app/src/main/res/navigation/movie_nav.xml
+--- a/app/src/main/res/navigation/movie_nav.xml	
++++ b/app/src/main/res/navigation/movie_nav.xml	
+@@ -7,9 +7,8 @@
+ 
+     <fragment
+         android:id="@+id/home3"
+-        android:name="com.example.retrofitexample.home"
+-        android:label="fragment_home"
+-        tools:layout="@layout/fragment_home" >
++        android:name="com.example.retrofitexample.ui.view.fragments.Home"
++        android:label="fragment_home">
+         <action
+             android:id="@+id/action_home3_to_movieDetails2"
+             app:destination="@id/movieDetails2" />
