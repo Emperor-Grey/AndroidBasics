@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NotesApp" parent="Theme.Material3.DynamicColors.DayNight">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="appBarLayoutStyle">@color/material_dynamic_primary0</item>
+        <item name="colorPrimary">@color/design_default_color_on_primary</item>
+        <item name="actionBarStyle">@style/NoElevationActionBar</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.Material3</item>
+        <item name="alertDialogTheme">@style/CustomAlertDialogTheme</item>
+    </style>
+
+    <style name="NoElevationActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="CustomAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog
+        </item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button.TextButton.Dialog
+        </item>
+    </style>
+
+    <style name="CircularShape">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.Material3.Corner.Full</item>
+    </style>
+
+
+    <!--    <style name="ThemeOverlay.NotesApp.FullscreenContainer" parent="">-->
+    <!--        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>-->
+    <!--        <item name="fullscreenTextColor">@color/light_blue_A400</item>-->
+    <!--    </style>-->
+
+</resources>
