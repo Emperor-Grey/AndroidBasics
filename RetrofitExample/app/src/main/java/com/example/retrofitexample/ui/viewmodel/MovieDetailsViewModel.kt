@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class MovieDetailsViewModel(
-    private val movieId: Int, private val movieRepository: MovieRepository
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
     private val _movieDetails = MutableStateFlow<MovieResponse?>(null)
     val movieDetails = _movieDetails.asStateFlow()
@@ -20,23 +20,28 @@ class MovieDetailsViewModel(
     private val _showErrorToast = Channel<Boolean>()
     val showErrorToast = _showErrorToast.receiveAsFlow()
 
-    private val _showLoading = Channel<Boolean>()
-    val showLoading = _showLoading.receiveAsFlow()
+    private val _showLoading = MutableStateFlow(false)
+    val showLoading = _showLoading.asStateFlow()
 
-    init {
+
+    fun fetchMovieDetails(movieId: Int) {
         viewModelScope.launch {
             movieRepository.getMovieDetails(movieId = movieId).collect { result ->
                 when (result) {
                     is Result.Error -> {
                         _showErrorToast.send(true)
-                        _showLoading.send(true)
+                        _showLoading.value = false
                     }
 
                     is Result.Success -> {
+                        _showLoading.value = false
                         result.data?.let { results ->
                             _movieDetails.value = results
                         }
-                        _showLoading.send(false)
+                    }
+
+                    is Result.Loading -> {
+                        _showLoading.value = true
                     }
                 }
             }

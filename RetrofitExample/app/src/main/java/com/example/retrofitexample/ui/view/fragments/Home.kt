@@ -22,20 +22,26 @@ import kotlinx.coroutines.launch
 class Home : Fragment() {
     private lateinit var movieViewModel: MovieViewModel
     private lateinit var progressBar: ProgressBar
+    private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
         progressBar = view.findViewById(R.id.progressBar)
+        progressBar.visibility = View.GONE
+
         val retrofitInstance = RetrofitInstance()
         movieViewModel = ViewModelProvider(
             requireActivity(), MovieViewModelFactory(
                 retrofitInstance
             )
         ).get(MovieViewModel::class.java)
+
         setUpRecyclerView(view)
         observeViewModel(view)
+
         return view
     }
 
@@ -51,8 +57,13 @@ class Home : Fragment() {
                 if (hasError) {
                     Toast.makeText(requireContext(), "Something went wrong", Toast.LENGTH_SHORT)
                         .show()
-                    progressBar.visibility = View.VISIBLE
                 }
+            }
+        }
+
+        lifecycleScope.launch {
+            movieViewModel.movies.collect { movies ->
+                movieAdapter.updateMovies(movies)
             }
         }
     }
@@ -61,18 +72,12 @@ class Home : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.movieList)
         recyclerView.layoutManager =
             GridLayoutManager(view.context, 2, GridLayoutManager.VERTICAL, false)
-        lifecycleScope.launch {
-            movieViewModel.movies.collect { movies ->
-                movies.let {
-                    recyclerView.adapter =
-                        MovieAdapter(view.context, movieViewModel.movies.value) { movieResult ->
-                            val action = HomeDirections.navigateToDetails(movieId = movieResult.id)
-                            Navigation.findNavController(view).navigate(action)
-                        }
-                    recyclerView.adapter?.notifyDataSetChanged()
-                }
-            }
+        movieAdapter = MovieAdapter(view.context) {
+            val action = HomeDirections.navigateToDetails(movieId = it.id)
+            Navigation.findNavController(view).navigate(action)
         }
+        recyclerView.adapter = movieAdapter
+
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)

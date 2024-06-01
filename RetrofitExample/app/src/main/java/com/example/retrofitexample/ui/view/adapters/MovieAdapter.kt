@@ -13,10 +13,10 @@ import com.example.retrofitexample.data.model.MovieResponse
 
 class MovieAdapter(
     private val context: Context,
-    private val movieList: List<MovieResponse>,
     private val onItemClickListener: (MovieResponse) -> Unit,
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
+    private val movieList: MutableList<MovieResponse> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false)
@@ -37,6 +37,11 @@ class MovieAdapter(
 
     override fun getItemCount(): Int {
         return movieList.size
+    }
+
+    fun updateMovies(newMovieList: List<MovieResponse>) {
+        movieList.addAll(newMovieList)
+        notifyDataSetChanged()
     }
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

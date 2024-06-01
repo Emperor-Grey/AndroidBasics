@@ -1,9 +1,9 @@
 package com.example.retrofitexample.data.repository
 
 import com.example.retrofitexample.data.api.MovieService
-import com.example.retrofitexample.utils.Result
 import com.example.retrofitexample.data.api.RetrofitInstance
 import com.example.retrofitexample.data.model.MovieResponse
+import com.example.retrofitexample.utils.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okio.IOException
@@ -14,6 +14,7 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
     private val movieService: MovieService = retrofitInstance.getMovieService()
     override suspend fun getPopularMovies(page: Int): Flow<Result<List<MovieResponse>>> {
         return flow {
+            emit(Result.Loading())
             val movies = try {
                 movieService.getPopularMovies(
                     page = page, apiKey = "d7c6aa191629170a8dfea80f78e1dcd6"
@@ -33,6 +34,7 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
 
     override suspend fun getMovieDetails(movieId: Int): Flow<Result<MovieResponse>> {
         return flow {
+            emit(Result.Loading())
             val movieDetails = try {
                 movieService.getMovieDetails(
                     apiKey = "d7c6aa191629170a8dfea80f78e1dcd6", movieId = movieId

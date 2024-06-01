@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +23,7 @@ class MovieDetails : Fragment() {
 
     private val args: MovieDetailsArgs by navArgs()
     private lateinit var movieDetailsViewModel: MovieDetailsViewModel
+
     private lateinit var progressBar: ProgressBar
     private lateinit var posterImage: ImageView
     private lateinit var title: TextView
@@ -29,20 +31,21 @@ class MovieDetails : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_movie_details, container, false)
 
         posterImage = view.findViewById(R.id.posterImage)
         title = view.findViewById(R.id.heading)
         description = view.findViewById(R.id.movieDescription)
-
         progressBar = view.findViewById(R.id.progressBar)
+
         val movieId = args.movieId
         val retrofitInstance = RetrofitInstance()
         movieDetailsViewModel = ViewModelProvider(
-            requireActivity(),
-            MovieDetailsViewModelFactory(movieId = movieId, retrofitInstance = retrofitInstance)
+            requireActivity(), MovieDetailsViewModelFactory(retrofitInstance = retrofitInstance)
         ).get(MovieDetailsViewModel::class.java)
+
+        movieDetailsViewModel.fetchMovieDetails(movieId)
+
         observeViewModel()
 
         return view
@@ -64,5 +67,18 @@ class MovieDetails : Fragment() {
                 }
             }
         }
+
+        lifecycleScope.launch {
+            movieDetailsViewModel.showLoading.collect { isLoading ->
+                progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            }
+        }
+
+        lifecycleScope.launch {
+            movieDetailsViewModel.showErrorToast.collect { hasError ->
+                Toast.makeText(requireContext(), "Error: $hasError", Toast.LENGTH_SHORT).show()
+            }
+        }
+
     }
 }
