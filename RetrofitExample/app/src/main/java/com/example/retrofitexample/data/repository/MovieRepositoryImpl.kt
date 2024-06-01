@@ -1,5 +1,6 @@
 package com.example.retrofitexample.data.repository
 
+import com.example.retrofitexample.BuildConfig
 import com.example.retrofitexample.data.api.MovieService
 import com.example.retrofitexample.data.api.RetrofitInstance
 import com.example.retrofitexample.data.model.MovieResponse
@@ -17,7 +18,7 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
             emit(Result.Loading())
             val movies = try {
                 movieService.getPopularMovies(
-                    page = page, apiKey = "d7c6aa191629170a8dfea80f78e1dcd6"
+                    page = page, apiKey = BuildConfig.apiKey
                 )
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -37,7 +38,7 @@ class MovieRepositoryImpl(private val retrofitInstance: RetrofitInstance) : Movi
             emit(Result.Loading())
             val movieDetails = try {
                 movieService.getMovieDetails(
-                    apiKey = "d7c6aa191629170a8dfea80f78e1dcd6", movieId = movieId
+                    apiKey = BuildConfig.apiKey, movieId = movieId
                 )
             } catch (e: IOException) {
                 e.printStackTrace()
