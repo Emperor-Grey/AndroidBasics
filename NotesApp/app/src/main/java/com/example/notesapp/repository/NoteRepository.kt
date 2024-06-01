@@ -13,5 +13,8 @@ class NoteRepository(
     suspend fun updateNote(note: Note) = noteDataBase.getNoteDao().updateNote(note)
     suspend fun deleteAllNotes() = noteDataBase.getNoteDao().deleteAllNotes()
 
+//    suspend fun getExistingTitles(query: String): List<String> =
+//        noteDataBase.getNoteDao().getExistingTitles(query)
+
     fun searchNotes(query: String?) = noteDataBase.getNoteDao().searchNote(query)
 }

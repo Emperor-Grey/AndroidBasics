@@ -15,7 +15,6 @@ class NoteViewModel(
 ) : AndroidViewModel(app) {
 
     private val _title = MutableStateFlow("")
-
     val title: StateFlow<String> = _title.asStateFlow()
 
     private val _description = MutableStateFlow("")
@@ -44,10 +43,21 @@ class NoteViewModel(
     }
 
     fun searchNote(query: String?) = viewModelScope.launch {
-        noteRepository.searchNotes(query).collect { searchedNote ->
-            _notes.value = searchedNote
+        if (query.isNullOrEmpty()) {
+            noteRepository.notes.collect { allNotes ->
+                _notes.value = allNotes
+            }
+        } else {
+            noteRepository.searchNotes(query).collect { searchedNote ->
+                _notes.value = searchedNote
+            }
         }
     }
+
+//    suspend fun getSuggestions(query: String): List<String> {
+//        return noteRepository.getExistingTitles("%$query%")
+//    }
+
 
     fun updateNote(note: Note) = viewModelScope.launch {
         noteRepository.updateNote(note)
@@ -58,10 +68,5 @@ class NoteViewModel(
 
     fun clearAll() = viewModelScope.launch {
         noteRepository.deleteAllNotes()
-    }
-
-    fun initUpdateOrDelete(note: Note) {
-        _title.value = note.title
-        _description.value = note.description
     }
 }

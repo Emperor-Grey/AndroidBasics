@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -112,8 +113,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         inflater.inflate(R.menu.home_menu, menu)
 
         val searchItem = menu.findItem(R.id.menu_search).actionView as SearchView
-        val deleteAll = menu.findItem(R.id.menu_removeAll)
-//        searchItem.isSubmitButtonEnabled = true
+//        searchItem.isSubmitButtonEnabled = false
         searchItem.setOnQueryTextListener(this)
     }
 
@@ -145,7 +145,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         newText?.let {
             noteViewModel.searchNote(it)
         }
-
         return true
     }
 

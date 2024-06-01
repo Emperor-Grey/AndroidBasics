@@ -32,4 +32,7 @@ interface NoteDao {
 
     @Query("SELECT * FROM ${Constants.TABLE_NAME} WHERE title LIKE :query OR description LIKE  :query ")
     fun searchNote(query: String?): Flow<List<Note>>
+//
+//    @Query("SELECT title FROM ${Constants.TABLE_NAME} WHERE title LIKE :query")
+//    suspend fun getExistingTitles(query: String): List<String>
 }
