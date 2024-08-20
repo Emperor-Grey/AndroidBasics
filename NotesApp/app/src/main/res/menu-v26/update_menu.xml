@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_delete"
+        android:icon="@drawable/baseline_delete"
+        android:iconTint="@color/material_on_background_emphasis_high_type"
+        android:title="Remove Note"
+        app:showAsAction="always" />
+
+</menu>

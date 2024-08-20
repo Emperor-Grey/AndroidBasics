@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.notesapp.ui.view.fragments.HomeFragment"
+        android:name="com.king_grey.notes_app.ui.view.fragments.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -23,7 +23,7 @@
     </fragment>
     <fragment
         android:id="@+id/newNoteFragment"
-        android:name="com.example.notesapp.ui.view.fragments.NewNoteFragment"
+        android:name="com.king_grey.notes_app.ui.view.fragments.NewNoteFragment"
         android:label="fragment_new_note"
         tools:layout="@layout/fragment_new_note">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateNoteFragment"
-        android:name="com.example.notesapp.ui.view.fragments.UpdateNoteFragment"
+        android:name="com.king_grey.notes_app.ui.view.fragments.UpdateNoteFragment"
         android:label="fragment_update_note"
         tools:layout="@layout/fragment_update_note">
         <action
@@ -44,12 +44,12 @@
             app:exitAnim="@android:anim/fade_out" />
         <argument
             android:name="notes"
-            app:argType="com.example.notesapp.data.model.Note"
+            app:argType="com.king_grey.notes_app.data.model.Note"
             app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.notesapp.ui.view.fragments.FirstFragment"
+        android:name="com.king_grey.notes_app.ui.view.fragments.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" >
         <action

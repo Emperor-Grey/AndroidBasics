@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.notesapp"
+    namespace = "com.king_grey.notes_app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.notesapp"
+        applicationId = "com.king_grey.notes_app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
