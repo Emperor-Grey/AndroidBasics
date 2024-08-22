@@ -38,7 +38,7 @@
                     android:background="@android:color/transparent"
                     android:ellipsize="end"
                     android:ems="10"
-                    android:hint="Type your Title"
+                    android:hint="@string/type_your_title"
                     android:inputType="text"
                     android:minHeight="48dp"
                     android:singleLine="true"
@@ -55,8 +55,9 @@
                     android:background="@android:color/transparent"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:hint="Type Something..."
+                    android:hint="@string/type_something"
                     android:inputType="textMultiLine"
+                    android:textColorHint="@color/material_on_background_emphasis_medium"
                     android:textSize="20sp" />
 
             </LinearLayout>

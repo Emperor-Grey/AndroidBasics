@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.king_grey.notes_app.ui.viewmodels
 
 import android.app.Application

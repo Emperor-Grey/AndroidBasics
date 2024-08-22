@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_notes">Add Notes</string>
+    <string name="no_notes_available">No Notes Available !!!</string>
+    <string name="type_something">Type Something...</string>
+    <string name="type_your_title">Type your Title</string>
+    <string name="update_notes">Update Notes</string>
+</resources>

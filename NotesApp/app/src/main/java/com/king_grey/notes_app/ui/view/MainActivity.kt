@@ -35,19 +35,6 @@ class MainActivity : AppCompatActivity() {
         val noteRepository = NoteRepository(NoteDataBase.getInstance(this))
         noteViewModel = ViewModelProvider(
             this, NoteViewModelFactory(app = application, noteRepository = noteRepository)
-        ).get(
-            NoteViewModel::class.java
-        )
-    }
-
-    private fun setWindowFlag(bits: Int, on: Boolean) {
-        val win = window
-        val winParams = win.attributes
-        if (on) {
-            winParams.flags = winParams.flags or bits
-        } else {
-            winParams.flags = winParams.flags and bits.inv()
-        }
-        win.attributes = winParams
+        )[NoteViewModel::class.java]
     }
 }

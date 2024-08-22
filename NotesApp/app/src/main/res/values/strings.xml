@@ -47,4 +47,9 @@
     </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_notes">Add Notes</string>
+    <string name="no_notes_available">No Notes Available !!!</string>
+    <string name="type_something">Type Something...</string>
+    <string name="type_your_title">Type your Title</string>
+    <string name="update_notes">Update Notes</string>
 </resources>

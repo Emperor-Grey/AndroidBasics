@@ -11,11 +11,11 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
             android:clickable="true"
-            android:contentDescription="Add Notes"
+            android:contentDescription="@string/add_notes"
             android:focusable="true"
             android:src="@drawable/baseline_add"
             app:borderWidth="0dp"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="50dp"
-                android:text="No Notes Available !!!"
+                android:text="@string/no_notes_available"
                 android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>

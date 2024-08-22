@@ -11,11 +11,11 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabDone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
             android:clickable="true"
-            android:contentDescription="Update Notes"
+            android:contentDescription="@string/update_notes"
             android:focusable="true"
             android:src="@drawable/baseline_done"
             app:borderWidth="0dp"
@@ -50,7 +50,7 @@
                         android:background="@android:color/transparent"
                         android:ellipsize="end"
                         android:ems="10"
-                        android:hint="Type your Title"
+                        android:hint="@string/type_your_title"
                         android:inputType="text"
                         android:minHeight="48dp"
                         android:singleLine="true"
@@ -68,9 +68,11 @@
                         android:background="@android:color/transparent"
                         android:ems="10"
                         android:gravity="start|top"
-                        android:hint="Type Something..."
+                        android:hint="@string/type_something"
                         android:inputType="textMultiLine"
+                        android:textColorHint="@color/material_on_background_emphasis_medium"
                         android:textSize="20sp" />
+
 
                 </LinearLayout>
 

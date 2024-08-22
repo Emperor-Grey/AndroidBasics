@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.king_grey.notes_app.ui.view.fragments
 
 import android.os.Bundle

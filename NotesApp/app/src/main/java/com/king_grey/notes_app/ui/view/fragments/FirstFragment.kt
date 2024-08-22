@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.king_grey.notes_app.ui.view.fragments
 
 import android.os.Bundle
@@ -13,27 +15,31 @@ import com.king_grey.notes_app.R
 
 class FirstFragment : Fragment() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(false)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val v = inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_first, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // Hide the action bar
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
         // Navigate to the next screen after 4 seconds
         Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.action_firstFragment_to_homeFragment)
+            if (isAdded) {
+                findNavController().navigate(R.id.action_firstFragment_to_homeFragment)
+            }
         }, 3000)
-
-        return v
     }
 
     override fun onDestroyView() {
