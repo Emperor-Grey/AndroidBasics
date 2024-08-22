@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Keep the attributes of your classes
+-keepattributes SourceFile,LineNumberTable
+
+# Example rule to keep all public classes
+-keep public class * {
+    public protected *;
+}
