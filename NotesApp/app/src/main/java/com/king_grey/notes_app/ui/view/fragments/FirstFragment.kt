@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.king_grey.notes_app.ui.view.fragments
 
 import android.os.Bundle
@@ -20,11 +18,9 @@ class FirstFragment : Fragment() {
         setHasOptionsMenu(false)
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -34,7 +30,7 @@ class FirstFragment : Fragment() {
         // Hide the action bar
         (activity as? AppCompatActivity)?.supportActionBar?.hide()
 
-        // Navigate to the next screen after 4 seconds
+        // Navigate to the next screen after 3 seconds
         Handler(Looper.getMainLooper()).postDelayed({
             if (isAdded) {
                 findNavController().navigate(R.id.action_firstFragment_to_homeFragment)
@@ -42,8 +38,8 @@ class FirstFragment : Fragment() {
         }, 3000)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         // Show the action bar again when leaving the fragment
         (activity as? AppCompatActivity)?.supportActionBar?.show()
     }

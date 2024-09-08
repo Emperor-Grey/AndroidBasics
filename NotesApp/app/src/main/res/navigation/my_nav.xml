@@ -51,10 +51,12 @@
         android:id="@+id/firstFragment"
         android:name="com.king_grey.notes_app.ui.view.fragments.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" >
+        tools:layout="@layout/fragment_first">
         <action
             android:id="@+id/action_firstFragment_to_homeFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/firstFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
 </navigation>
